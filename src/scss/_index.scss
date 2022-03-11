@@ -1,12 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 @import './color';
+@import './layout';
+
+* {
+  margin: 0;
+  padding: 0;
+  color: #2e3040;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
 html,
 body {
   background: $background;
-  font-family: 'Roboto', sans-serif;
 }
-.name {
-  color: blue;
+
+.wrapper {
+  background-color: #ffff;
+  border-radius: 30px;
+  padding: 60px;
 }
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+

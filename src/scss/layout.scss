@@ -1,0 +1,76 @@
+$grid-breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$colPercentage: calc(100% / 12);
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    display: flex;
+    width: calc(#{$i} * #{$colPercentage});
+  }
+}
+
+@each $breakpoaint, $pixel in $grid-breakpoints {
+  @media (min-width: $pixel) {
+    @for $i from 1 through 12 {
+      .col-#{$breakpoaint}-#{$i} {
+        display: flex;
+        width: calc(#{$i} * #{$colPercentage});
+      }
+    }
+  }
+}
+
+$container: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+.container,
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+}
+@each $breakpoaint, $pixel in $container {
+  @media (min-width: $pixel) {
+    .container {
+      width: $pixel;
+      margin: 0 auto;
+    }
+  }
+}
+
+$displayOpts: 'block', 'flex', 'inline-flex', 'grid';
+@each $displayOpt in $displayOpts {
+  .d-#{$displayOpt} {
+    display: #{$displayOpt};
+  }
+}
+
+$justifyOpts: 'start', 'end', 'center', 'space-between', 'space-evenly';
+@each $justifyOpt in $justifyOpts {
+  .justify-#{$justifyOpt} {
+    justify-content: #{$justifyOpt};
+  }
+}
+
+$alignOpts: 'start', 'end', 'center';
+@each $alignOpt in $alignOpts {
+  .align-#{$alignOpt} {
+    align-items: #{$alignOpt};
+  }
+}
+
+$textOpts: 'left', 'center', 'right';
+@each $textOpt in $textOpts {
+  .text-#{$textOpt} {
+    text-align: #{$textOpt};
+  }
+}
