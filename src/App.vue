@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <alert v-for="alert in alerts" :key="alert.id" :type="alert.type">
       {{ alert.message }}
       <template #close="{ toggle }">

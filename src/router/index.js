@@ -11,12 +11,12 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: page('Home.vue'),
-  },
+    component: page('Home')
+  }
 ];
 
 const router = new VueRouter({
-  routes,
+  routes
 });
 
 export default router;

@@ -53,6 +53,12 @@ $displayOpts: 'block', 'flex', 'inline-flex', 'grid';
     display: #{$displayOpt};
   }
 }
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
 
 $justifyOpts: 'start', 'end', 'center', 'space-between', 'space-evenly';
 @each $justifyOpt in $justifyOpts {
