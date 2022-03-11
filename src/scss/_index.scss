@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import './color';
+
+html,
+body {
+  background: $background;
+  font-family: 'Roboto', sans-serif;
+}
+.name {
+  color: blue;
+}

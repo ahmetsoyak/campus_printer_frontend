@@ -4,11 +4,11 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 
-import './scss/index.scss';
+import './scss/_index.scss';
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: (h) => h(App)
 }).$mount('#app');
