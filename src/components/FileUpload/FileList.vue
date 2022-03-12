@@ -1,5 +1,5 @@
 <template>
-  <ul class="mt-4" v-if="this.files.length" v-cloak>
+  <ul class="mt-4" v-if="this.files.length">
     <li class="text-sm p-1" v-for="(file, key) in files" :key="key">
       {{ file.name }}
       <button

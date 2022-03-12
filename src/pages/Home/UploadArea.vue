@@ -10,18 +10,32 @@
         />
       </div>
       <div id="print" class="col-12 col-md-6">
-        <file-uploader />
+        <file-uploader v-if="files.length > 0" :files.sync="files" />
+        <div
+          v-else
+          class="container-fluid d-flex flex-col align-center justify-center"
+        >
+          <file-list :files="files" />
+          <config-modal />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ConfigModal from '@/components/ConfigModal.vue';
+import FileList from '/src/components/FileUpload/FileList.vue';
 import FileUploader from '/src/components/FileUpload/FileUploader.vue';
 
 export default {
-  components: { FileUploader },
-  name: 'Upload-Area'
+  components: { FileUploader, FileList, ConfigModal },
+  name: 'Upload-Area',
+  data() {
+    return {
+      files: []
+    };
+  }
 };
 </script>
 

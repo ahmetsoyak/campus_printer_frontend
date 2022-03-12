@@ -1,6 +1,5 @@
 <template>
-  <div id="uploader" class="file-uploader">
-    <file-list v-if="filelist.length > 0" :files="files" />
+  <div id="uploader" class="file-uploader d-flex flex-col">
     <div class="overlay"></div>
     <div class="file-uploader__area">
       <input
@@ -22,20 +21,17 @@
 </template>
 
 <script>
-import FileList from './FileList.vue';
-
 export default {
   name: 'File-Uploader-Component',
-  components: { FileList },
-  delimiters: ['${', '}'], // Avoid Twig conflicts
-  data() {
-    return {
-      filelist: [] // Store uploaded files
-    };
+  props: {
+    files: {
+      type: Array,
+      required: true
+    }
   },
   methods: {
     onChange() {
-      this.filelist = [...this.$refs.file.files];
+      this.$emit('update:files', [...this.$refs.file.files]);
     }
   }
 };
