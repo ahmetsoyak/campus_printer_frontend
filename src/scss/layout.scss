@@ -47,7 +47,7 @@ $container: (
   }
 }
 
-$displayOpts: 'block', 'flex', 'inline-flex', 'grid';
+$displayOpts: 'none', 'block', 'flex', 'inline-flex', 'grid';
 @each $displayOpt in $displayOpts {
   .d-#{$displayOpt} {
     display: #{$displayOpt};

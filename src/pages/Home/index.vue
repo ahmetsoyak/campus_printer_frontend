@@ -18,19 +18,23 @@
         </p>
         <p class="slogan-text">
           Campus Printer, birçok noktayaki yazıcı otomatlar sayesinde belge
-          yazdırma işlemini hızlı, kolay ve temasız hale getirir.
+          yazdırma işlemini <strong>hızlı, kolay ve temasız</strong> hale
+          getirir.
         </p>
-        <button class="btn-action">Hemen Dene</button>
+        <a class="button-action hearth-hover" href="#print">Hemen Dene</a>
       </div>
       <div class="col-12 col-md-6 justify-center">
         <img src="../../assets/main-page-illustrator.svg" alt="" />
       </div>
     </div>
+    <upload-area />
   </div>
 </template>
 
 <script>
+import UploadArea from './UploadArea.vue';
 export default {
+  components: { UploadArea },
   name: 'Home-Page'
 };
 </script>
@@ -48,7 +52,7 @@ nav {
       color: black;
       gap: 0 20px;
       cursor: pointer;
-      transition: all 500ms;
+      transition: all 200ms;
       &:hover {
         transform: scale(1.05);
       }

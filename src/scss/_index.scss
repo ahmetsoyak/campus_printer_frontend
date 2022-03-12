@@ -9,20 +9,34 @@
   color: #2e3040;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  &:hover {
-    
-  }
 }
 
 html,
 body {
   background: $background;
+  scroll-behavior: smooth;
 }
 
 .wrapper {
   background-color: #ffff;
   border-radius: 30px;
   padding: 80px;
+  margin-bottom: 40px;
+  &-file-area {
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      border: 10px dashed #3163c6;
+      top: -7px;
+      bottom: -7px;
+      left: -7px;
+      right: -7px;
+      pointer-events: none;
+    }
+    box-sizing: border-box;
+  }
 }
 
 h1 {
@@ -39,14 +53,43 @@ h2 {
   width: fit-content;
   border: none;
   border-radius: 5px;
-  transition: all 500ms;
-  &:hover {
-    transform: scale(1.05)
-  }
 }
 
 .btn-action {
   @extend .btn;
   background-color: $primary;
   color: $white;
+}
+
+.hearth-hover:hover {
+  animation: activehover 500ms infinite;
+}
+
+a.button {
+  @extend .btn;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+}
+.button-action {
+  @extend .btn-action;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+}
+
+@keyframes activehover {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
