@@ -1,5 +1,5 @@
 <template>
-  <select class="form-select" label="label" v-model="selected">
+  <select label="label" v-model="selected">
     <option v-for="option in options" :value="option.key" :key="option.key">
       {{ option.label }}
     </option>
@@ -15,7 +15,7 @@ export default {
       required: true
     },
     value: {
-      type: [String, Array, Object]
+      default: ''
     }
   },
   computed: {
