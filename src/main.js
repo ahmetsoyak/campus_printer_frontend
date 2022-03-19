@@ -4,6 +4,7 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 
+import './mixins';
 import './scss/_index.scss';
 import './scss/fontawesome/css/all.css';
 Vue.config.productionTip = false;
