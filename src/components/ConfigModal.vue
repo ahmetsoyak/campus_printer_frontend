@@ -16,9 +16,9 @@
             />
           </div>
           <form @submit.prevent="submit" class="col-12 col-sm-4 form">
-            <div class="d-flex justify-space-between">
+            <div class="d-flex justify-space-between mb-4">
               <span>Yazdır</span>
-              <span>{{ pageCount }}</span>
+              <span>{{ pageCount }} Sayfa</span>
             </div>
             <div class="form-item">
               <label for="" class="form-label">Sayfalar</label>
@@ -30,7 +30,7 @@
               <input
                 v-if="configs.pages == 'custom'"
                 type="text"
-                class="form-input"
+                class="form-input mt-1"
                 v-model="customPages"
                 placeholder="Örn: 1-3, 8, 11-13"
               />
@@ -77,6 +77,17 @@
                 v-model="configs.pageSide"
               />
             </div>
+            <div class="form-item">
+              <tr class="d-flex justify-space-between my-2">
+                <td>Tutar:</td>
+                <td>{{ formatPrice(calcPrice) }}</td>
+              </tr>
+            </div>
+            <div class="form-item">
+              <button class="btn-action btn-block" type="submit">
+                Ödeme Yap
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -85,6 +96,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Modal from './UI/Modal.vue';
 import SelectList from './UI/SelectList.vue';
 
@@ -97,6 +109,19 @@ export default {
       const numberOfPage =
         this.countSelectedPages / (this.configs.pagesPerSheet * pageSide);
       return Math.ceil(numberOfPage) * this.configs.copyNumber;
+    },
+    calcPrice() {
+      var totalCost = 0;
+      const pageCount = this.pageCount;
+      if (this.configs.pageSide === 'single') {
+        totalCost = pageCount * this.singlePagePrice * this.configs.copyNumber;
+      } else {
+        totalCost = Math.floor(pageCount / 2) * this.doublePagePrice;
+        if (pageCount % 2 === 1) {
+          totalCost += this.singlePagePrice;
+        }
+      }
+      return totalCost;
     },
     countSelectedPages() {
       if (this.configs.pages == 'all') return this.file.pageCount;
@@ -120,7 +145,9 @@ export default {
   },
   data() {
     return {
-      isShown: true,
+      singlePagePrice: 0.75,
+      doublePagePrice: 1.25,
+      isShown: false,
       file: {
         url: 'http://www.africau.edu/images/default/sample.pdf',
         pageCount: 5
@@ -151,8 +178,17 @@ export default {
     };
   },
   methods: {
-    submit(event) {
-      console.log(event);
+    submit() {
+      axios
+        .post('api/print-confirmation', {
+          ...this.configs,
+          fileUrl: this.file.url
+        })
+        .then((response) => {
+          if (response.status.code === 201) {
+            this.$router.push('/checkout/payment');
+          }
+        });
     }
   }
 };
@@ -168,18 +204,6 @@ export default {
 }
 .form {
   flex-direction: column;
+  padding: 10px 30px;
 }
-// .config-form {
-//   border-spacing: 20px;
-//   td {
-//     vertical-align: text-top;
-//   }
-//   .pages-input {
-//     display: flex;
-//     flex-direction: column;
-//     .form-select {
-//       margin-bottom: 4px;
-//     }
-//   }
-// }
 </style>

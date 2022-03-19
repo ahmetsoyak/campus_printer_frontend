@@ -10,7 +10,7 @@
         />
       </div>
       <div id="print" class="col-12 col-md-6">
-        <file-uploader v-if="files.length > 0" :files.sync="files" />
+        <file-uploader v-if="files.length === 0" :files.sync="files" />
         <div
           v-else
           class="container-fluid d-flex flex-col align-center justify-center"

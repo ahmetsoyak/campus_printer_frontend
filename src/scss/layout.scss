@@ -25,20 +25,12 @@ $colPercentage: calc(100% / 12);
     }
   }
 }
-
-$container: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
-);
 .container,
 .container-fluid {
   width: 100%;
   margin: 0 auto;
 }
-@each $breakpoaint, $pixel in $container {
+@each $breakpoaint, $pixel in $grid-breakpoints {
   @media (min-width: $pixel) {
     .container {
       width: $pixel;

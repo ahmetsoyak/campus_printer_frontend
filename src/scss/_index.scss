@@ -60,6 +60,15 @@ h2 {
   @extend .btn;
   background-color: $primary;
   color: $white;
+  &:active {
+    transform: scale(0.98);
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.btn-block {
+  width: 100%;
 }
 
 .hearth-hover:hover {
