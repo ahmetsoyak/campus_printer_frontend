@@ -29,8 +29,8 @@ import FileList from '/src/components/FileUpload/FileList.vue';
 import FileUploader from '/src/components/FileUpload/FileUploader.vue';
 
 export default {
-  components: { FileUploader, FileList, ConfigModal },
   name: 'Upload-Area',
+  components: { FileUploader, FileList, ConfigModal },
   data() {
     return {
       files: []

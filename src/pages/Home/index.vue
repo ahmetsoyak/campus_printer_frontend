@@ -26,8 +26,8 @@
 <script>
 import UploadArea from './UploadArea.vue';
 export default {
-  components: { UploadArea },
-  name: 'Home-Page'
+  name: 'Home-Page',
+  components: { UploadArea }
 };
 </script>
 

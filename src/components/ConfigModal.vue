@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import Modal from './UI/Modal.vue';
 import SelectList from './UI/SelectList.vue';
 
@@ -179,16 +179,17 @@ export default {
   },
   methods: {
     submit() {
-      axios
-        .post('api/print-confirmation', {
-          ...this.configs,
-          fileUrl: this.file.url
-        })
-        .then((response) => {
-          if (response.status.code === 201) {
-            this.$router.push('/checkout/payment');
-          }
-        });
+      this.$router.push('/checkout/payment');
+      // axios
+      //   .post('api/print-confirmation', {
+      //     ...this.configs,
+      //     fileUrl: this.file.url
+      //   })
+      //   .then((response) => {
+      //     if (response.status.code === 201) {
+      //       this.$router.push('/checkout/payment');
+      //     }
+      //   });
     }
   }
 };
