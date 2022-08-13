@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper d-flex">
-    <div class="col-12 col-md-6 justify-end flex-col">
+    <div class="col-12 col-md-6 flex-col">
       <payment-tabs />
     </div>
     <div class="col-12 col-md-6 justify-center">

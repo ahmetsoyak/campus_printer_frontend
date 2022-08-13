@@ -13,7 +13,11 @@
           yazdırma işlemini <strong>hızlı, kolay ve temasız</strong> hale
           getirir.
         </p>
-        <a class="button-action hearth-hover" href="#print">Hemen Dene</a>
+        <router-link :to="{ hash: 'print' }">
+          <cp-button size="large" hover-animation="heart-attack">
+            Hemen Dene
+          </cp-button>
+        </router-link>
       </div>
       <div class="col-12 col-md-6 justify-center">
         <img src="../../assets/main-page-illustrator.svg" alt="" />
@@ -25,9 +29,11 @@
 
 <script>
 import UploadArea from './UploadArea.vue';
+import CPButton from '@/components/UI/CPButton.vue';
+
 export default {
   name: 'Home-Page',
-  components: { UploadArea }
+  components: { UploadArea, 'cp-button': CPButton }
 };
 </script>
 

@@ -14,15 +14,20 @@
       <label for="fileInput" class="d-flex flex-col align-center text-center">
         Sürekle Bırak <br />
         veya <br /><br />
-        <a class="button-action">Dosya Seç</a>
+        <cp-button varient="secondary" size="large" @click="$refs.file.click()">
+          Dosya Seç
+        </cp-button>
       </label>
     </div>
   </div>
 </template>
 
 <script>
+import CPButton from '../UI/CPButton.vue';
+
 export default {
   name: 'File-Uploader-Component',
+  components: { 'cp-button': CPButton },
   props: {
     files: {
       type: Array,
