@@ -3,11 +3,13 @@
 @import './color';
 @import './layout';
 @import './form';
+@import './ui_components/tab';
+@import './ui_components/button';
 
 * {
   margin: 0;
   padding: 0;
-  color: #2e3040;
+  color: $black;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
@@ -46,62 +48,12 @@ h1 {
 h2 {
   font-size: 1.5rem;
 }
-
-.btn {
-  padding: 16px 30px;
-  font-size: 24px;
-  cursor: pointer;
-  width: fit-content;
-  border: none;
-  border-radius: 5px;
+h3 {
+  font-size: 1.25rem;
 }
 
-.btn-action {
-  @extend .btn;
-  background-color: $primary;
-  color: $white;
-  &:active {
-    transform: scale(0.98);
-  }
-  &:hover {
-    opacity: 0.9;
-  }
-}
-.btn-block {
-  width: 100%;
-}
-
-.hearth-hover:hover {
-  animation: activehover 500ms infinite;
-}
-
-a.button {
-  @extend .btn;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
-
-  text-decoration: none;
-}
-.button-action {
-  @extend .btn-action;
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
-
-  text-decoration: none;
-}
-
-@keyframes activehover {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+b {
+  font-size: 600;
 }
 
 .cursor-pointer {

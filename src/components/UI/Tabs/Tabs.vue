@@ -1,11 +1,12 @@
 <template>
   <div>
-    <ul>
+    <ul class="tabs">
       <li
-        class="cursor-pointer"
         v-for="(tabTitle, index) in tabTitles"
         :key="index"
+        class="tabs__header"
         @click="selectTitle(tabTitle)"
+        :class="{ active: tabTitle === selectedTitle }"
       >
         {{ tabTitle }}
       </li>

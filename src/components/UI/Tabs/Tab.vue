@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.selectedTitle === title">
+  <div class="tabs__content" v-if="data.selectedTitle === title">
     <slot />
   </div>
 </template>
@@ -13,14 +13,6 @@ export default {
     title: {
       type: String,
       required: true
-    }
-  },
-  watch: {
-    data: {
-      handler: function (newVal) {
-        console.log(newVal);
-      },
-      deep: true
     }
   }
 };

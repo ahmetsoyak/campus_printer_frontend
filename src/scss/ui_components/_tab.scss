@@ -1,0 +1,41 @@
+.tabs {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  &::before {
+    content: '';
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+    pointer-events: none;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+    padding: 16px 20px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    transition: all 100ms ease-in;
+    &:hover {
+      background-color: rgba($black, 0.06);
+    }
+    &.active {
+      color: $primary;
+      border-bottom: 2px solid $primary;
+      &:hover {
+        background-color: rgba($primary, 0.12);
+      }
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding: 20px;
+  }
+}
