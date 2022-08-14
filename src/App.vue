@@ -8,11 +8,8 @@
         <a href="#contact">İLETİŞİM</a>
       </div>
     </nav>
-    <alert v-for="alert in alerts" :key="alert.id" :type="alert.type">
+    <alert v-for="alert in alerts" :key="alert.id" :alert="alert">
       {{ alert.message }}
-      <template #close="{ toggle }">
-        <v-icon @click="removeAlert(toggle, alert.id)">mdi-close</v-icon>
-      </template>
     </alert>
     <router-view />
   </div>
@@ -29,12 +26,6 @@ export default {
     ...mapGetters({
       alerts: 'alert/alerts'
     })
-  },
-  methods: {
-    removeAlert(toggle, alertID) {
-      this.$store.dispatch('alert/removeAlert', alertID);
-      toggle();
-    }
   }
 };
 </script>
