@@ -2,8 +2,9 @@
 
 @import './color';
 @import './layout';
-@import './form';
 @import './ui_components/tab';
+@import './ui_components/form';
+@import './ui_components/alert';
 @import './ui_components/button';
 
 * {
@@ -54,8 +55,4 @@ h3 {
 
 b {
   font-size: 600;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }

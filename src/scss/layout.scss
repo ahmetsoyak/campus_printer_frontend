@@ -80,7 +80,6 @@ $textOpts: 'left', 'center', 'right';
 $sides: (top, bottom, left, right);
 $step: 5;
 @for $i from 0 through 10 {
-
   $space: $i * $step;
   .m-#{$i} {
     margin: #{$space}px !important;

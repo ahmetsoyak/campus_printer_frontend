@@ -1,14 +1,14 @@
 <template>
-  <div id="uploader" class="file-uploader d-flex flex-col">
+  <div ref="uploader" class="file-uploader d-flex flex-col">
     <div class="overlay"></div>
     <div class="file-uploader__area">
       <input
+        ref="file"
         type="file"
+        accept=".pdf"
         id="fileInput"
         class="d-none"
-        @change="onChange"
-        ref="file"
-        accept=".pdf"
+        @input="onChange"
       />
 
       <label for="fileInput" class="d-flex flex-col align-center text-center">
@@ -35,62 +35,58 @@ export default {
     }
   },
   methods: {
-    onChange() {
-      this.$emit('update:files', [...this.$refs.file.files]);
+    onChange(event) {
+      let file = event.target.files[0];
+      this.$emit('update:files', [{ name: file.name, type: file.type }]);
+    },
+    dragEnd() {
+      this.$refs.uploader.classList.remove('dragover');
+    },
+    uploadFile(file) {
+      // let url = 'YOUR URL HERE';
+      // let formData = new FormData();
+      // formData.append('file', file);
+      // fetch(url, {
+      //   method: 'POST',
+      //   body: formData
+      // })
+      //   .then(() => {
+      //     /* Done. Inform the user */
+      //   })
+      //   .catch(() => {
+      //     /* Error. Inform the user */
+      //   });
+      return {
+        name: file.name,
+        type: file.type
+      };
     }
-  }
-};
-window.addEventListener('load', function () {
-  const body = document.getElementsByTagName('body')[0];
-  const uploader = document.getElementById('uploader');
-  const fileInput = document.getElementById('fileInput');
-  if (uploader) {
+  },
+  mounted() {
+    const body = document.getElementsByTagName('body')[0];
     body.addEventListener('dragover', (event) => {
       event.preventDefault();
-      if (!event.currentTarget.classList.contains('dragover')) {
-        uploader.classList.add('dragover');
+      if (!this.$refs.uploader.classList.contains('dragover')) {
+        this.$refs.uploader.classList.add('dragover');
       }
     });
     body.addEventListener('drop', (event) => {
       event.preventDefault();
-      console.log('drop');
-      const files = event.dataTransfer.files;
-      handleFiles(files);
-      console.log(fileInput.files);
-      dragEnd();
+      const file = event.dataTransfer.files[0];
+      this.$emit('update:files', [this.uploadFile(file)]);
+      this.dragEnd();
     });
-    body.addEventListener('dragleave', (event) => {
+    body.addEventListener('mouseleave', (event) => {
       event.preventDefault();
-      if (event.currentTarget.classList.contains('dragover')) {
-        dragEnd();
+      if (this.$refs.uploader.classList.contains('dragover')) {
+        this.dragEnd();
       }
     });
-    body.addEventListener('dragend', dragEnd);
+    body.addEventListener('dragend', () => {
+      this.dragEnd();
+    });
   }
-  function dragEnd() {
-    uploader.classList.remove('dragover');
-  }
-  function handleFiles(files) {
-    [...files].forEach(uploadFile);
-  }
-  function uploadFile(file) {
-    let url = 'YOUR URL HERE';
-    let formData = new FormData();
-
-    formData.append('file', file);
-
-    fetch(url, {
-      method: 'POST',
-      body: formData
-    })
-      .then(() => {
-        /* Done. Inform the user */
-      })
-      .catch(() => {
-        /* Error. Inform the user */
-      });
-  }
-});
+};
 </script>
 
 <style lang="scss" scoped>

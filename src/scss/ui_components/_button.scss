@@ -4,6 +4,7 @@
   width: fit-content;
   border-radius: 5px;
   box-sizing: border-box;
+  height: fit-content;
   &:active {
     transform: scale(0.98);
   }
@@ -14,11 +15,11 @@
   // Sizes
   &--small {
     font-size: 12px;
-    padding: 5px 10px;
+    padding: 4px 10px;
   }
   &--normal {
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 8px 15px;
   }
   &--large {
     font-size: 24px;

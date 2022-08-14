@@ -1,6 +1,8 @@
 <template>
   <div>
-    <button class="btn" @click="isShown = true">İncele ve Onayla</button>
+    <cp-button varient="primary" size="large" @click="isShown = true">
+      İncele ve Onayla
+    </cp-button>
     <modal :isShown.sync="isShown">
       <div class="modal">
         <div class="d-flex justify-end pointer" @click="isShown = false">
@@ -84,9 +86,9 @@
               </tr>
             </div>
             <div class="form-item">
-              <button class="btn-action btn-block" type="submit">
+              <cp-button block varient="primary" type="submit">
                 Ödeme Yap
-              </button>
+              </cp-button>
             </div>
           </form>
         </div>
@@ -98,11 +100,12 @@
 <script>
 // import axios from 'axios';
 import Modal from './UI/Modal.vue';
+import CPButton from './UI/CPButton.vue';
 import SelectList from './UI/SelectList.vue';
 
 export default {
   name: 'Config-Modal',
-  components: { Modal, SelectList },
+  components: { Modal, SelectList, 'cp-button': CPButton },
   computed: {
     pageCount() {
       const pageSide = this.configs.pageSide === 'single' ? 1 : 2;
