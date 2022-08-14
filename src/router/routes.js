@@ -19,10 +19,10 @@ export default [
         component: page('Checkout/Payment')
       },
       {
-        path: 'completed',
-        name: 'checkout.complete',
+        path: 'completed/:uid',
+        name: 'checkout.completed',
         // TODO: Add a middleware
-        component: page('Checkout/Complete')
+        component: page('Checkout/Completed')
       }
     ]
   },

@@ -1,5 +1,6 @@
 <template>
   <button
+    :type="type"
     :disabled="disabled"
     :class="[
       'btn',
@@ -19,6 +20,10 @@
 export default {
   name: 'CPButton-UI',
   props: {
+    type: {
+      type: String,
+      default: ''
+    },
     varient: {
       type: String,
       default: 'primary',
