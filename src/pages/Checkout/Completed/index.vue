@@ -23,7 +23,9 @@
             placeholder="E-mail"
             label="Kodu E-postana göndermemizi ister misin?"
           />
-          <cp-button type="submit" varient="primary">Gönder</cp-button>
+          <cp-button type="submit" varient="primary" class="mt-2">
+            Gönder
+          </cp-button>
         </form>
         <p>
           Çevrendeki Campus Printer’ları görmek için
