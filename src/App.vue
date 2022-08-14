@@ -1,12 +1,14 @@
 <template>
   <div class="app container home">
     <nav class="d-flex justify-space-between">
-      <h1>Campus Printer</h1>
-      <div class="d-grid links text-right">
+      <router-link :to="{ name: 'home' }">
+        <h1>Campus Printer</h1>
+      </router-link>
+      <!-- <div class="d-grid links text-right">
         <a href="#how-it-works">NASIL ÇALIŞIR?</a>
         <a href="#pricing">FİYATLANDIRMA</a>
         <a href="#contact">İLETİŞİM</a>
-      </div>
+      </div> -->
     </nav>
     <alert v-for="alert in alerts" :key="alert.id" :alert="alert">
       {{ alert.message }}
@@ -49,5 +51,8 @@ nav {
       }
     }
   }
+}
+a {
+  text-decoration: none;
 }
 </style>
